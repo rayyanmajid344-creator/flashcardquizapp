@@ -61,10 +61,7 @@ flutter run -d chrome
 
 ## What I learned
 
-<!-- Replace this comment with 2–3 sentences in your own words.
-     For example: what was hardest to build, what you'd do differently,
-     or what you learned about Flutter animations or state management. -->
-
+It was a little difficult because I had worked with Android Studio but not Flutter, so working with a different framework and IDE was a new experience, but it helped me learn new things as well. The most interesting thing I learned was widgets, because I was used to XML layouts, so building the whole interface out of widgets was very different from what I had been doing. The other most impressive thing was hot reload, which shows changes in the app within seconds, compared to Android Studio, where rebuilding takes much longer.
 ## Roadmap
 
 - Save decks on the device (shared_preferences or Hive)
