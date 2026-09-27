@@ -128,3 +128,11 @@ ButtonStyle outlinedStyle() => OutlinedButton.styleFrom(
   textStyle: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
 );
+
+/// A soft fade between screens, used after the splash and welcome screens.
+Route<void> fadeRoute(Widget page) => PageRouteBuilder<void>(
+  transitionDuration: const Duration(milliseconds: 450),
+  pageBuilder: (context, animation, secondaryAnimation) => page,
+  transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+      FadeTransition(opacity: animation, child: child),
+);
