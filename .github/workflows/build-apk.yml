@@ -1,0 +1,52 @@
+# Builds an Android APK on GitHub's computers and publishes it on the
+# repository's Releases page.
+#
+# It runs only when you ask it to: Actions tab -> "Build Android APK" -> "Run workflow".
+name: Build Android APK
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write # needed to create the release
+
+jobs:
+  build-apk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Install Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Get packages
+        run: flutter pub get
+
+      - name: Build the APK
+        run: flutter build apk --release
+
+      - name: Rename the APK
+        run: mv build/app/outputs/flutter-apk/app-release.apk flashcard-quiz.apk
+
+      - name: Publish on the Releases page
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: Flashcard Quiz v1.0.${{ github.run_number }}
+          body: |
+            Android APK for Flashcard Quiz.
+
+            To install: download `flashcard-quiz.apk` on your Android phone, open it,
+            and allow installing from this source if your phone asks.
+          files: flashcard-quiz.apk
+          make_latest: true
