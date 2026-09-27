@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../data/deck_icons.dart';
 import '../models/deck.dart';
 import '../theme/app_theme.dart';
 
@@ -12,19 +13,8 @@ class NewDeckSheet extends StatefulWidget {
 }
 
 class _NewDeckSheetState extends State<NewDeckSheet> {
-  static const _icons = <IconData>[
-    Icons.menu_book_rounded,
-    Icons.psychology_rounded,
-    Icons.code_rounded,
-    Icons.science_rounded,
-    Icons.calculate_rounded,
-    Icons.palette_rounded,
-    Icons.translate_rounded,
-    Icons.rocket_launch_rounded,
-  ];
-
   final _title = TextEditingController();
-  IconData _icon = _icons.first;
+  String _iconName = pickableDeckIcons.first;
   Color _color = AppColors.deckPalette.first;
 
   @override
@@ -39,7 +29,7 @@ class _NewDeckSheetState extends State<NewDeckSheet> {
       Deck(
         id: DateTime.now().microsecondsSinceEpoch.toString(),
         title: _title.text.trim(),
-        icon: _icon,
+        iconName: _iconName,
         color: _color,
       ),
     );
@@ -69,7 +59,7 @@ class _NewDeckSheetState extends State<NewDeckSheet> {
             ),
             child: Row(
               children: [
-                Icon(_icon, color: AppColors.ink, size: 34),
+                Icon(deckIcons[_iconName], color: AppColors.ink, size: 34),
                 const SizedBox(width: 14),
                 Expanded(
                   child: ValueListenableBuilder<TextEditingValue>(
@@ -110,9 +100,9 @@ class _NewDeckSheetState extends State<NewDeckSheet> {
             spacing: 8,
             runSpacing: 8,
             children: [
-              for (final icon in _icons)
+              for (final name in pickableDeckIcons)
                 GestureDetector(
-                  onTap: () => setState(() => _icon = icon),
+                  onTap: () => setState(() => _iconName = name),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 150),
                     width: 48,
@@ -122,14 +112,14 @@ class _NewDeckSheetState extends State<NewDeckSheet> {
                       color: AppColors.surfaceHigh,
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(
-                        color: icon == _icon ? _color : Colors.transparent,
+                        color: name == _iconName ? _color : Colors.transparent,
                         width: 2.5,
                       ),
                     ),
                     child: Icon(
-                      icon,
+                      deckIcons[name],
                       size: 24,
-                      color: icon == _icon ? _color : AppColors.textMuted,
+                      color: name == _iconName ? _color : AppColors.textMuted,
                     ),
                   ),
                 ),

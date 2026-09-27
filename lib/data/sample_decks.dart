@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 import '../models/deck.dart';
 import '../theme/app_theme.dart';
 
@@ -7,7 +5,7 @@ List<Deck> buildSampleDecks() => [
   Deck(
     id: 'data-structures',
     title: 'Data Structures',
-    icon: Icons.account_tree_rounded,
+    iconName: 'tree',
     color: AppColors.deckPalette[3],
     cards: [
       const Flashcard(
@@ -43,7 +41,7 @@ List<Deck> buildSampleDecks() => [
   Deck(
     id: 'oop',
     title: 'Object-Oriented Programming',
-    icon: Icons.extension_rounded,
+    iconName: 'puzzle',
     color: AppColors.deckPalette[2],
     cards: [
       const Flashcard(
@@ -75,7 +73,7 @@ List<Deck> buildSampleDecks() => [
   Deck(
     id: 'networking',
     title: 'Computer Networks',
-    icon: Icons.lan_rounded,
+    iconName: 'network',
     color: AppColors.deckPalette[0],
     cards: [
       const Flashcard(
@@ -104,7 +102,7 @@ List<Deck> buildSampleDecks() => [
   Deck(
     id: 'dbms',
     title: 'Databases',
-    icon: Icons.storage_rounded,
+    iconName: 'storage',
     color: AppColors.deckPalette[1],
     cards: [
       const Flashcard(
@@ -136,7 +134,7 @@ List<Deck> buildSampleDecks() => [
   Deck(
     id: 'general',
     title: 'General Knowledge',
-    icon: Icons.public_rounded,
+    iconName: 'globe',
     color: AppColors.deckPalette[4],
     cards: [
       const Flashcard(

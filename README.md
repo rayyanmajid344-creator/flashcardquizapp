@@ -18,6 +18,7 @@ A retro, cinema-inspired flashcard and quiz app built with Flutter. Create your 
 - **Quiz mode.** A 15-second timer per question, auto-generated multiple-choice options, bonus points for speed and streaks, and a shake animation on wrong answers.
 - **Results.** An animated score ring, confetti on high scores, personal best tracking, and a "review missed cards" option.
 - **Keyboard shortcuts on web and desktop.** Space to flip, ← / → to swipe, 1–4 to answer.
+- **Saves your decks.** Decks, cards and best scores are stored on the device, so nothing is lost when you close the app.
 
 ## Screenshots
 
@@ -42,6 +43,7 @@ More screenshots are in the [`screenshots`](screenshots) folder.
 - `CustomPainter` for the confetti and score ring
 - Custom gesture handling and implicit/explicit animations for the swipe, flip and shake effects
 - [google_fonts](https://pub.dev/packages/google_fonts) for typography
+- [shared_preferences](https://pub.dev/packages/shared_preferences) for saving decks
 
 ## Project structure
 
@@ -67,6 +69,5 @@ flutter run -d chrome
 It was a little difficult because I had worked with Android Studio but not Flutter, so working with a different framework and IDE was a new experience, but it helped me learn new things as well. The most interesting thing I learned was widgets, because I was used to XML layouts, so building the whole interface out of widgets was very different from what I had been doing. The other most impressive thing was hot reload, which shows changes in the app within seconds, compared to Android Studio, where rebuilding takes much longer.
 ## Roadmap
 
-- Save decks on the device (shared_preferences or Hive)
 - Import decks from CSV
 - Spaced repetition scheduling
